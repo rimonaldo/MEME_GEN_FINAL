@@ -75,8 +75,7 @@ function drawCopyText(text, idx = gMeme.lineIdx) {
 function renderMemeImg() {
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
-    // gMeme.url = loadFromStorage(URL_KEY)
-
+    gMeme.url = loadFromStorage(URL_KEY)
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         gCtxBottom.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)

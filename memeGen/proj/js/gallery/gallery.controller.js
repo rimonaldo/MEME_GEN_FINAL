@@ -17,7 +17,7 @@ function renderMemesGallery() {
     var elGallery = document.querySelector('.meme-gallery-container')
     var innerHTML = ""
     var memes = loadFromStorage('MEMES')
-    console.log(memes);
+
     memes.forEach((img) => {
         console.log(img.imgId);
         var id = img.imgId

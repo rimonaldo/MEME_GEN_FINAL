@@ -38,9 +38,9 @@ function getMeme(id) {
     gUrl = gImgs[idx].url
     console.log(gUrl);
 
-    saveMeme()
     saveToStorage(URL_KEY, gUrl)
     saveToStorage(ID_KEY, id)
+    saveMeme()
 
 }
 
@@ -49,12 +49,16 @@ function addMemes(url) {
 
     if(!url){
         for (var i = 0; i < 15; i++) {
+            
             var id = _makeId()
             gImgs.push({
                 tags: ['funny'],
                 id,
                 url: `memeGen/meme-imgs (square)/${i + 1}.jpg`
+
             })
+
+            // console.log(gImgs);
         }
     } else{
         console.log('new img');
