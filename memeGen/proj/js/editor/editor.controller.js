@@ -225,13 +225,16 @@ function resizeCanvas() {
     var isResize = false
     if (window.innerWidth < 500 && window.innerWidth > 400 && isResize === false) {
         // isResize = true
-        gCanvas.width = 350;
-        gCanvas.height = 350;
-        gCanvasBottom.width = 350
-        gCanvasBottom.height = 350
-        gCanvasCopy.width = 350;
-        gCanvasCopy.height = 350;
+        gCanvas.width = 250;
+        gCanvas.height = 250;
+        gCanvasBottom.width = 250
+        gCanvasBottom.height = 250
+        gCanvasCopy.width = 250;
+        gCanvasCopy.height = 250;
 
+
+        console.log(document.querySelector('.txt-input').style);
+        document.querySelector('.txt-input').style.height = 50
         gMeme.lines.forEach((line)=>{
             line.size = 40
             line.linePos.x = 10

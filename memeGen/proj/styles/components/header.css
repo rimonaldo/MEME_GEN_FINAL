@@ -1,6 +1,6 @@
 header h1{
     margin-bottom: 1rem;
-    font-size: 4rem;
+    font-size: 3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     letter-spacing: 0.1rem;
 
@@ -19,7 +19,7 @@ ul li{
 
 
 ul li:first-child{
-    margin-inline-end: 1em;
+    padding-inline-end: 1em;
 }
 
 nav ul{

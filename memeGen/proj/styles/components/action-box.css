@@ -1,27 +1,35 @@
-.actions-box{
+.actions-box {
     height: 500px;
-    width: 500px;   
+    width: 500px;
     display: flex;
     flex-direction: column;
-    /* border: 1px green solid;  */
-}
-
-.save-box{
-    /* border: 1px green solid; */
 }
 
 
-
-.actions-box input{
+.actions-box input {
 
     width: 500px;
     height: 50px;
     background-color: orange;
     
-    
 }
 
-.action-btns{
+@media (max-width:550px) {
+    .actions-box input {
+        margin: auto;
+        width: 80vw;
+        height: 50px;
+    }
+
+    body .action-btn{
+        width: 50px;
+        height: 50px;
+    }
+
+
+}
+
+.action-btns {
     /* justify-content: space-between; */
     margin: auto;
     /* padding-inline-start: 3.2em; */
@@ -34,7 +42,7 @@
     /* border: 1px green solid; */
 }
 
-.delete{
+.delete {
     /* border: 1px white solid; */
     justify-self: center;
     align-self: center;
@@ -44,47 +52,44 @@
 
 }
 
-.action-btn{
+.action-btn {
     width: 70px;
     height: 70px;
-    /* padding-inline-start: 0.3rem; */
-    /* margin-bottom: 0.3rem; */
     padding: 0;
     margin: auto;
-
     background-color: #A4BAB7;
-    border-radius: 5px;   
-    
-    
+    border-radius: 5px;
+
+
 }
 
-.action-btn span{
+.action-btn span {
     font-size: 1.5em;
 }
 
-.action-btn.delete{
-   width: 2em; 
-   height: 2em;
-   background-image: url(../../graphics/icons/delete.png);
-   background-position: center;
-   background-repeat: no-repeat;
-   background-size: contain;
-   
+.action-btn.delete {
+    width: 2em;
+    height: 2em;
+    background-image: url(../../graphics/icons/delete.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
 
 }
 
-.size-input{
-   width: 70px;
-   height: 70px;
+.size-input {
+    width: 70px;
+    height: 70px;
 
 }
 
-.btns{
+.btns {
     margin-bottom: 1rem;
     /* border: 1px green solid; */
 }
 
-.btns > * {
+.btns>* {
     margin-inline-start: 0.5rem;
     margin-inline-end: 0.5rem;
 }
@@ -93,39 +98,39 @@
 
 /* BUTTONS */
 
-.fa-trash::before{
+.fa-trash::before {
     content: "\f2ed";
 }
 
-.fa-font::before{
+.fa-font::before {
     content: "\f031";
 }
 
 
-.fa-ltr::before{
+.fa-ltr::before {
     content: "\f036";
 }
 
 
-.fa-center::before{
+.fa-center::before {
     content: "\f037";
 }
 
 
-.fa-rtl::before{
+.fa-rtl::before {
     content: "\f038";
 }
 
-.fa-pallete::before{
+.fa-pallete::before {
     content: "\f53f";
 }
 
-.fa-pallete{
+.fa-pallete {
     justify-content: center;
     position: relative;
 }
 
-.fa-pallete input{
+.fa-pallete input {
     width: 2em;
     position: absolute;
     right: 0;
@@ -134,12 +139,12 @@
     background-color: white;
 }
 
-.fa-download::before{
+.fa-download::before {
     content: "\f019";
     color: rgb(255, 166, 0);
 }
 
-.fa-save::before{
+.fa-save::before {
     content: "\f0c7";
     color: #080F0F;
 }

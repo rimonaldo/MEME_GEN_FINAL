@@ -11,7 +11,7 @@
 .search-bar{
     margin-inline-start: 1em;
     /* border: 1px orange solid; */
-    font-size: 2em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: space-around;
