@@ -1,0 +1,29 @@
+
+.about{
+    /* border: 1px green solid; */
+    height: 100%;
+    color: rgb(240, 219, 219);
+    
+}
+
+.layout{
+    display: flex;
+    flex-direction: column;
+}
+
+.bugs ul{
+    
+    border: 1px white solid; 
+}
+
+.bugs ul li{
+    /* border: 1px white solid; */
+    color: rgb(235, 216, 157);
+    
+}
+
+.links{
+    border: 1px white solid;
+    
+
+}

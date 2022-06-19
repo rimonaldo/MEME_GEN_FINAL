@@ -1,50 +1,50 @@
 'use strict'
-const URL_KEY = 'URL'
-const MEME_KEY = 'MEME'
-const MEMES_KEY = 'MEMES'
-const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+// const URL_KEY = 'URL'
+// const MEME_KEY = 'MEME'
+// const MEMES_KEY = 'MEMES'
+// const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
-var gCanvasCopy
-var gCtxCopy
-var gStartPos
-var gUrl
-var gMemes = []
-var gCanvas
-var gCtx
-var gCanvasBottom
-var gCtxBottom
-var gOpacity = 1
-var gIsStroke = false
+// var gCanvasCopy
+// var gCtxCopy
+// var gStartPos
+// var gUrl
+// var gMemes = []
+// var gCanvas
+// var gCtx
+// var gCanvasBottom
+// var gCtxBottom
+// var gOpacity = 1
+// var gIsStroke = false
 
 
-var gMeme = {
-    url: '',
-    memeUrl:'',
-    imgId: 0,
-    lineIdx: 0,
-    lines: [{
-        linePos: { x: 20, y: 100 },
-        text: 'ENTER TEXT',
-        size: 60,
-        align: 'left',
-        color: 'white',
-        stroke: 'black',
-        isStroke: true,
-        isDrag: false,
-        isClicked: false
-    },
-    {
-        linePos: { x: 50, y: 450 },
-        text: '',
-        size: 60,
-        align: 'left',
-        color: 'white',
-        stroke: 'black',
-        isStroke: false,
-        isDrag: false,
-        isClicked: false
-    }]
-}
+// var gMeme = {
+//     url: '',
+//     memeUrl:'',
+//     imgId: 0,
+//     lineIdx: 0,
+//     lines: [{
+//         linePos: { x: 20, y: 100 },
+//         text: 'ENTER TEXT',
+//         size: 60,
+//         align: 'left',
+//         color: 'white',
+//         stroke: 'black',
+//         isStroke: true,
+//         isDrag: false,
+//         isClicked: false
+//     },
+//     {
+//         linePos: { x: 50, y: 450 },
+//         text: '',
+//         size: 60,
+//         align: 'left',
+//         color: 'white',
+//         stroke: 'black',
+//         isStroke: false,
+//         isDrag: false,
+//         isClicked: false
+//     }]
+// }
 
 /* RENDERS
 // -----------------------------------------------------------------*/

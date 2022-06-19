@@ -1,10 +1,61 @@
 'use strict'
 var gIsSavedMeme = false
 var gCurrMeme
+
+const URL_KEY = 'URL'
+const MEME_KEY = 'MEME'
+const MEMES_KEY = 'MEMES'
+const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
+
+var gCanvasCopy
+var gCtxCopy
+var gStartPos
+var gUrl
+var gMemes = []
+var gCanvas
+var gCtx
+var gCanvasBottom
+var gCtxBottom
+var gOpacity = 1
+var gIsStroke = false
+
+
+var gMeme = {
+    url: '',
+    memeUrl:'',
+    imgId: 0,
+    lineIdx: 0,
+    lines: [{
+        linePos: { x: 20, y: 100 },
+        text: 'ENTER TEXT',
+        size: 60,
+        align: 'left',
+        color: 'white',
+        stroke: 'black',
+        isStroke: true,
+        isDrag: false,
+        isClicked: false
+    },
+    {
+        linePos: { x: 50, y: 450 },
+        text: '',
+        size: 60,
+        align: 'left',
+        color: 'white',
+        stroke: 'black',
+        isStroke: false,
+        isDrag: false,
+        isClicked: false
+    }]
+}
+
+
+
+
 function init() {
 
 
-    gMemes = loadFromStorage('MEMES')
+    gMemes = loadFromStorage('MEMES') || [] 
 
 
     setCanvas()
@@ -22,8 +73,9 @@ function renderCanvas() {
 
 function onSave(elLink, ev) {
     ev.preventDefault()
+    
     gMemes.push(gMeme)
-
+    console.log(gMeme);
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
 
@@ -32,7 +84,7 @@ function onSave(elLink, ev) {
         setCanvasCopy()
     }
     var data = gCanvasCopy.toDataURL();
-    // elLink.href = data;
+ 
     gMeme.memeUrl = data
 
     saveMeme()

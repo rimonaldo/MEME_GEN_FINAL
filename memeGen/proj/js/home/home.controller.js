@@ -19,15 +19,13 @@ function renderGallery() {
     var innerHTML = ""
     var startHtml = `<div class="upload"><a href="#" class="fa fa-solid fa-upload gallery-img"> <input onchange="onLoadImg(value)" id="image-input" accept="image/png, image/jpeg" type="file"></a></div>`
     gImgs.forEach((img) => {
-        console.log(img);
+        
         innerHTML += ` <a href="editor.html"> <img  onclick="getMeme(${img.id})" class="gallery-img" id="${img.id}" src='${img.url}' alt=""></a>`
         console.log(elGallery.innerHTML);
     })
     elGallery.innerHTML = startHtml+ innerHTML
     
 }
-
-
 
 
 function renderUploadedImg(url){
@@ -71,7 +69,6 @@ function addMemes(url) {
 
 
 }
-
 
 
 var imageInput = document.querySelector('#image-input')
