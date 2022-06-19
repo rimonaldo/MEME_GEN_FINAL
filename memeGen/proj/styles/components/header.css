@@ -7,14 +7,14 @@ header h1{
 }
 
 nav{
-    background-color: rgb(218, 218, 218);   
+    background-color: rgb(54, 54, 54);   
     align-items: center;
 }
 
 ul li{
     all: none;
     list-style: none;
-    color: black;  
+    color: orange;  
 }
 
 
@@ -25,6 +25,6 @@ ul li:first-child{
 nav ul{
     display: flex;
     justify-content: flex-end;
-    line-height: 100px;
+    line-height: 60px;
 }
 

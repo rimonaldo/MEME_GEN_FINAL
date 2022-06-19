@@ -1,15 +1,17 @@
 .meme-box{
-    margin: auto;
+    margin:0 auto;
     width: 80%;
     
     display: flex;
     /* border: 1px red solid; */
     justify-content: center;
+
     flex-wrap: wrap;
 
 }
 
 .canvas-box{
+
     position: relative;
     margin-bottom: 1rem;
 }

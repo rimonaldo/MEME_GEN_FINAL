@@ -46,11 +46,15 @@ function init() {
 
 
     gMeme = loadMeme()
-
+    console.log(gMeme);
     setCanvas()
     renderMemeImg()
     addListeners()
     setImgId()
+
+    setTimeout(() => {
+        _clearStroke()
+    }, 1000)
 
 }
 
@@ -64,6 +68,7 @@ function renderCanvas() {
 function onSave(elLink, ev) {
     ev.preventDefault()
     gMemes.push(gMeme)
+    console.log(gMemes);
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
 
@@ -111,6 +116,10 @@ function onAddLine() {
     gMeme.lineIdx = gMeme.lines.length - 1
     renderCanvas()
     strokeOn()
+
+    setTimeout(() => {
+        _clearStroke()
+    }, 1000)
 }
 
 function onInputText() {
@@ -172,7 +181,7 @@ function getEvPos(ev) {
         //Calc the right pos according to the touch screen
         pos = {
             x: ev.pageX - ev.target.offsetLeft - (ev.target.clientLeft),
-            y: ev.pageY - ev.target.offsetTop - (ev.target.clientTop + 150)
+            y: ev.pageY - ev.target.offsetTop - (ev.target.clientTop + 80)
         }
     }
     return pos
@@ -262,5 +271,44 @@ function resizeCanvas() {
     // Unless needed, better keep height fixed.
     //   gCanvas.height = elContainer.offsetHeight
 
+    
+}
+
+function uploadImg() {
+    const imgDataUrl = gCanvasCopy.toDataURL('image/jpeg')
+    var shareBtn = document.querySelector('.share-btn')
+
+    function onSuccess(uploadedImgUrl) {
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        shareBtn.innerHTML = `
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+          </a>`
+        shareBtn.querySelector('a').click()
+    }
+    doUploadImg(imgDataUrl, onSuccess)
+}
+
+function doUploadImg(imgDataUrl, onSuccess) {
+    const formData = new FormData()
+    formData.append('img', imgDataUrl)
+
+    fetch('//ca-upload.com/here/upload.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(res => res.text())
+        .then(url => {
+            console.log('Got back live url:', url)
+            onSuccess(url)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+}
+
+
+function onShareMeme(ev){
+
+    uploadImg()
     
 }

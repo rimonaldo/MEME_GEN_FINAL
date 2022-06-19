@@ -1,69 +1,104 @@
-.gallery-container{
-
+.gallery-container {
     display: grid;
-    
-    grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
-    grid-template-rows: repeat(auto-fit, 1fr);
-    /* border: 5px black solid; */
-    row-gap: 0.5em;
-    /* column-gap: 0.5em; */
-
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 
-@media (min-width:550px){
-    body .gallery-container{
+
+@media (max-width:550px) {
+    body .gallery-container {
+        margin-bottom: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-rows: repeat(auto-fill, 1fr);
+        /* border: 5px black solid; */
+        row-gap: 0.5em;
+        /* column-gap: 0.5em; */
+
+        margin-bottom: 3rem;
+    }
+
+
+    body .gallery-img {
+        
         margin: auto;
+        border: 1px black solid;
+        height: 140px;
+        width: 140px;
+        display: flex;
+        /* min-width: 200px; */
+        border-radius: 5px;
+
+    }
+
+    body .gallery-img.fa-upload {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (min-width:550px) {
+    body .gallery-container {
+
+        margin:0 auto 1rem;
         width: 60%;
         display: grid;
-        grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         grid-template-rows: repeat(auto-fill, 1fr);
 
         row-gap: 0.5em;
         column-gap: 0;
-    
+
         /* margin-bottom: 3rem; */
     }
 
 
-    
+    .gallery-img{
+        /* background-color: whitesmoke; */
+        opacity: 80%;
+        transition: 0.1s;
+    }
+
+    .gallery-img:hover{
+        opacity: 100%;
+
+    }
+
+
 }
 
 
-.gallery-img{
+.gallery-img {
     margin: auto;
     border: 1px black solid;
     height: 180px;
     display: flex;
     /* min-width: 200px; */
-
     border-radius: 5px;
-    
+
 }
 
-.gallery-img{
-    
-}
+.gallery-img {}
 
-.gallery-img.fa-upload{
+.gallery-img.fa-upload {
     width: 180px;
 }
 
-a.fa.fa-solid.fa-upload::before{
+a.fa.fa-solid.fa-upload::before {
     content: "\f093";
     color: orange;
     font-size: 5rem;
 }
 
 
-.upload{
+.upload {
     position: relative;
-    
+
 }
 
 
-.upload input{
+.upload input {
     position: absolute;
     bottom: 0;
     border: 1px white solid;
@@ -72,14 +107,15 @@ a.fa.fa-solid.fa-upload::before{
     opacity: 0;
 }
 
-.new-image{
-    width: 180px;
+.new-image {
+    max-width: 180px;
+    max-height: 180px;
     margin: auto;
     display: none;
- 
+
 }
 
-.new-image a{
+.new-image a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

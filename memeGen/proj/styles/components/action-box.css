@@ -1,11 +1,18 @@
+
+
 .actions-box {
     height: 500px;
-    width: 500px;
     display: flex;
     flex-direction: column;
+    /* overflow: hidden; */
+    align-items: center;
+
+
 }
 
-
+*{
+    /* outline: 1px  green solid; */
+}
 .actions-box input {
     margin: 0  auto 1em;
     width: 500px;
@@ -17,6 +24,12 @@
 }
 
 @media (max-width:550px) {
+
+    body .actions-box{
+
+        /* border: 1px green solid; */
+        /* width: 350px; */
+    }
     .actions-box input {
        
         width: 80vw;
@@ -28,40 +41,35 @@
         height: 50px;
     }
 
+    .btns{
+        /* margin-bottom: 0.5rem; */
+    }
 
 }
 
 .action-btns {
-    /* justify-content: space-between; */
     margin:0 auto;
-    /* padding-inline-start: 3.2em; */
-    /* border: 1px rgb(214, 52, 52) solid; */
-    width: 500px;
     display: flex;
     justify-content: space-around;
-    /* flex-direction: row; */
-
-    /* border: 1px green solid; */
 }
 
 .delete {
-    /* border: 1px white solid; */
     justify-self: center;
     align-self: center;
-    padding-inline-start: 0.3rem;
+    /* padding-inline-start: 0.3rem; */
     position: relative;
     bottom: 6px;
-
 }
 
 .action-btn {
     width: 70px;
     height: 70px;
     padding: 0;
-    margin: auto;
+    margin:0 auto;
     background-color: #A4BAB7;
     border-radius: 5px;
-
+    border: none;
+    cursor: pointer;
 
 }
 
@@ -88,7 +96,9 @@
 
 .btns {
     margin-bottom: 1rem;
+    
     /* border: 1px green solid; */
+    
 }
 
 .btns>* {
@@ -99,6 +109,8 @@
 
 
 /* BUTTONS */
+
+
 
 .fa-trash::before {
     content: "\f2ed";
@@ -149,4 +161,30 @@
 .fa-save::before {
     content: "\f0c7";
     color: #080F0F;
+    
+}
+
+.share-btn{
+    
+    min-width: 280px;
+
+    line-height: 1.3rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #4267B2;
+    margin: 0 auto 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+.share-btn span::before{
+    padding-inline-start:0.5em ;
+    font-family: fa-brands;
+    content: "\f09a";
+    /* content: "\f064"; */
+
 }
