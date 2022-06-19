@@ -229,6 +229,8 @@ function resizeCanvas() {
         gCanvas.height = 350;
         gCanvasBottom.width = 350
         gCanvasBottom.height = 350
+        gCanvasCopy.width = 350;
+        gCanvasCopy.height = 350;
 
         gMeme.lines.forEach((line)=>{
             line.size = 40
@@ -237,12 +239,14 @@ function resizeCanvas() {
         renderCanvas()
     }
 
-    if (window.innerWidth > 500 && isResize === false) {
+    if (window.innerWidth > 500 &&  window.innerWidth < 600 && isResize === false) {
         isResize = true
         gCanvas.width = 500;
         gCanvas.height = 500;
         gCanvasBottom.width = 500
         gCanvasBottom.height = 500
+        gCanvasCopy.width = 500;
+        gCanvasCopy.height = 500;
 
         gMeme.lines.forEach((line)=>{
             line.size = 60
