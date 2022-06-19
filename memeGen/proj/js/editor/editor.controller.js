@@ -225,10 +225,10 @@ function resizeCanvas() {
     var isResize = false
     if (window.innerWidth < 500 && window.innerWidth > 400 && isResize === false) {
         // isResize = true
-        gCanvas.width = 400;
-        gCanvas.height = 400;
-        gCanvasBottom.width = 400
-        gCanvasBottom.height = 400
+        gCanvas.width = 350;
+        gCanvas.height = 350;
+        gCanvasBottom.width = 350
+        gCanvasBottom.height = 350
 
         gMeme.lines.forEach((line)=>{
             line.size = 40
