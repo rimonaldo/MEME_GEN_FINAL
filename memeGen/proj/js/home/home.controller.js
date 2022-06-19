@@ -38,6 +38,7 @@ function getMeme(id) {
     gUrl = gImgs[idx].url
     console.log(gUrl);
 
+    saveMeme()
     saveToStorage(URL_KEY, gUrl)
     saveToStorage(ID_KEY, id)
 
