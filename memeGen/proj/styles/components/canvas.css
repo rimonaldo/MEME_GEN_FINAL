@@ -1,6 +1,7 @@
 .meme-box{
     margin: auto;
     width: 80%;
+    
     display: flex;
     /* border: 1px red solid; */
     justify-content: center;

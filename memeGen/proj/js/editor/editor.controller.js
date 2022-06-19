@@ -167,8 +167,8 @@ function getEvPos(ev) {
         ev = ev.changedTouches[0]
         //Calc the right pos according to the touch screen
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - (ev.target.clientLeft - 100),
-            y: ev.pageY - ev.target.offsetTop - (ev.target.clientTop + 250)
+            x: ev.pageX - ev.target.offsetLeft - (ev.target.clientLeft),
+            y: ev.pageY - ev.target.offsetTop - (ev.target.clientTop + 150)
         }
     }
     return pos
