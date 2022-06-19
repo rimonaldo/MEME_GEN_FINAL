@@ -225,12 +225,12 @@ function resizeCanvas() {
     var isResize = false
     if (window.innerWidth < 500 && window.innerWidth > 400 && isResize === false) {
         // isResize = true
-        gCanvas.width = 250;
-        gCanvas.height = 250;
-        gCanvasBottom.width = 250
-        gCanvasBottom.height = 250
-        gCanvasCopy.width = 250;
-        gCanvasCopy.height = 250;
+        gCanvas.width = 300;
+        gCanvas.height = 300;
+        gCanvasBottom.width = 300
+        gCanvasBottom.height = 300
+        gCanvasCopy.width = 300;
+        gCanvasCopy.height = 300;
 
 
         console.log(document.querySelector('.txt-input').style);
