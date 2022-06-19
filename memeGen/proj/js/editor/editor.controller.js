@@ -40,6 +40,8 @@ var gMeme = {
 
 function init() {
     gMemes = loadFromStorage('MEMES') || []
+
+    gMeme = loadMeme()
     setCanvas()
     renderMemeImg()
     addListeners()

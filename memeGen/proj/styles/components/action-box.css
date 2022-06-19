@@ -1,10 +1,9 @@
 .actions-box{
-    height: 350px;
+    height: 500px;
     width: 500px;   
     display: flex;
     flex-direction: column;
-    
-    /* border: 1px red solid; */
+    /* border: 1px green solid;  */
 }
 
 .save-box{
@@ -16,19 +15,23 @@
 .actions-box input{
     /* margin-bottom: 0.3em; */
     /* border: 1px green solid; */
-
+    
     width: 500px;
 
     
 }
 
 .action-btns{
+    /* justify-content: space-between; */
     margin: auto;
-    padding-inline-start: 3.2em;
+    /* padding-inline-start: 3.2em; */
     /* border: 1px rgb(214, 52, 52) solid; */
-    width: 350px;
+    width: 500px;
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    /* flex-direction: row; */
+
+    /* border: 1px green solid; */
 }
 
 .delete{
@@ -42,15 +45,17 @@
 }
 
 .action-btn{
-    width: 60px;
-    height: 60px;
-    padding-inline-start: 0.3rem;
+    width: 70px;
+    height: 70px;
+    /* padding-inline-start: 0.3rem; */
     /* margin-bottom: 0.3rem; */
     padding: 0;
     margin: auto;
 
     background-color: #A4BAB7;
-    border-radius: 5px;    
+    border-radius: 5px;   
+    
+    
 }
 
 .action-btn span{
@@ -68,19 +73,20 @@
 
 }
 
-.download-btns{
-    /* border: 1px green solid; */
-}
-
-
 .size-input{
-   width: 60px;
-   height: 60px;
+   width: 70px;
+   height: 70px;
 
 }
 
 .btns{
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    /* border: 1px green solid; */
+}
+
+.btns > * {
+    margin-inline-start: 0.5rem;
+    margin-inline-end: 0.5rem;
 }
 
 
