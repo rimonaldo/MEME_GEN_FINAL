@@ -21,7 +21,7 @@ function renderMemesGallery() {
     memes.forEach((img) => {
         console.log(img.imgId);
         var id = img.imgId
-        innerHTML += ` <a href="editor.html"> <img onclick="onLoadMeme('${id}')"  onclick="renderSavedMeme('${id}')" class="gallery-img" id="${id}" src='${img.memeUrl}' alt=""></a>`
+        innerHTML += ` <a href="#"> <img onclick="onLoadMeme('${id}')"  onclick="renderSavedMeme('${id}')" class="gallery-img" id="${id}" src='${img.memeUrl}' alt=""></a>`
         console.log(elGallery.innerHTML);
     })
     elGallery.innerHTML = innerHTML
@@ -34,10 +34,12 @@ function findMemeById(id){
 }
 
 function onLoadMeme(id){
+    console.log(id);
     gMemes = loadFromStorage('MEMES')
     gCurrMeme = findMemeById(id)
-    saveToStorage('CURR_MEME' , gCurrMeme)
-    
+    console.log(gCurrMeme);
+    saveToStorage(MEME_KEY,gCurrMeme)
+    saveToStorage(URL_KEY , gCurrMeme.url)  
 }
 
 

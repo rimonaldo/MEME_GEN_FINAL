@@ -10,7 +10,7 @@ const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 var gCanvasCopy
 var gCtxCopy
 var gStartPos
-var gUrl
+
 var gMemes = []
 var gCanvas
 var gCtx
@@ -19,10 +19,9 @@ var gCtxBottom
 var gOpacity = 1
 var gIsStroke = false
 
-
 var gMeme = {
     url: '',
-    memeUrl:'',
+    memeUrl: '',
     imgId: 0,
     lineIdx: 0,
     lines: [{
@@ -35,34 +34,17 @@ var gMeme = {
         isStroke: true,
         isDrag: false,
         isClicked: false
-    },
-    {
-        linePos: { x: 50, y: 450 },
-        text: '',
-        size: 60,
-        align: 'left',
-        color: 'white',
-        stroke: 'black',
-        isStroke: false,
-        isDrag: false,
-        isClicked: false
     }]
+
 }
 
-
-
-
 function init() {
-
-
-    gMemes = loadFromStorage('MEMES') || [] 
-
-
+    gMemes = loadFromStorage('MEMES') || []
     setCanvas()
     renderMemeImg()
     addListeners()
     setImgId()
-    gCtx.textAlign = 'left'
+
 }
 
 function renderCanvas() {
@@ -73,9 +55,7 @@ function renderCanvas() {
 
 function onSave(elLink, ev) {
     ev.preventDefault()
-    
     gMemes.push(gMeme)
-    console.log(gMeme);
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
 
@@ -84,7 +64,7 @@ function onSave(elLink, ev) {
         setCanvasCopy()
     }
     var data = gCanvasCopy.toDataURL();
- 
+
     gMeme.memeUrl = data
 
     saveMeme()
@@ -92,29 +72,20 @@ function onSave(elLink, ev) {
 }
 
 function downloadCanvas(elLink, ev) {
-
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
-
     img.onload = () => {
         gCtxCopy.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         setCanvasCopy()
     }
-
-
     var data = gCanvasCopy.toDataURL();
     elLink.href = data;
-
     elLink.download = 'meme_' + gMeme.imgId;
-
-
 }
 
 function setDownload(elLink, ev) {
     // ev.preventDefault()
-    console.log(elLink);
     downloadCanvas(elLink)
-
 }
 
 function setCanvasCopy() {
@@ -123,28 +94,22 @@ function setCanvasCopy() {
 
 function onPallete(val) {
     setFontColor(val)
-
     renderCanvas()
 }
 // add a new line
 function onAddLine() {
     strokeOff()
-
     addLine()
     gMeme.lineIdx = gMeme.lines.length - 1
-    console.log(gMeme.lineIdx);
     renderCanvas()
     strokeOn()
-
 }
-
-// sets the line the user is editing
 
 function onInputText() {
     _strokeRect()
     setTimeout(() => {
         _clearStroke()
-    }, 3000)
+    }, 1000)
 }
 
 function onSetLine(direction) {
@@ -153,6 +118,9 @@ function onSetLine(direction) {
     var { x, y } = getLinePos()
     setInputVal(getLine().text)
     _strokeRect(x, y)
+    setTimeout(() => {
+        _clearStroke()
+    }, 1000)
 
     saveMeme()
 }
@@ -176,24 +144,17 @@ function onDeleteLine() {
     clearCanvas()
 }
 
-
-
-
-
-
 function setTextDrag(isDrag) {
     var line = getLine()
     line.isDrag = isDrag
 }
 
 function getEvPos(ev) {
-
     //Gets the offset pos , the default pos
     var pos = {
         x: ev.offsetX,
         y: ev.offsetY
     }
-
     // Check if its a touch ev
     if (gTouchEvs.includes(ev.type)) {
         //soo we will not trigger the mouse ev
@@ -202,8 +163,8 @@ function getEvPos(ev) {
         ev = ev.changedTouches[0]
         //Calc the right pos according to the touch screen
         pos = {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop
+            x: ev.pageX - ev.target.offsetLeft - (ev.target.clientLeft - 100),
+            y: ev.pageY - ev.target.offsetTop - (ev.target.clientTop + 250)
         }
     }
     return pos
@@ -214,7 +175,6 @@ function moveText(dx, dy) {
     var line = getLine()
     // add diff
     var diff = (line.text.length) ? line.text.length * 16 : 160
-
     x += dx - diff
     y += dy
     // sets position in line object pos
@@ -231,13 +191,13 @@ function addListeners() {
 }
 
 function _addMouseListeners() {
-    gCanvas.addEventListener('mousemove', onMove)
     gCanvas.addEventListener('mousedown', onDown)
+    gCanvas.addEventListener('mousemove', onMove)
     gCanvas.addEventListener('mouseup', onUp)
 }
 
 function _addTouchListeners() {
-    gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchstart', onDown)
+    gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchend', onUp)
 }

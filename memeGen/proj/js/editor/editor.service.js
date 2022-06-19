@@ -49,24 +49,21 @@
 /* RENDERS
 // -----------------------------------------------------------------*/
 
-function renderCopy(){
+function renderCopy() {
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
-
     img.onload = () => {
-
         for (var i = 0; i < gMeme.lines.length; i++) {
             var text = gMeme.lines[i].text
-            var { x, y } = gMeme.lines[i].linePos
+            // var { x, y } = gMeme.lines[i].linePos
             drawCopyText(text, i)
         }
-
     }
 }
 
 function drawCopyText(text, idx = gMeme.lineIdx) {
     var line = gMeme.lines[idx]
-    var {x,y} = line.linePos
+    var { x, y } = line.linePos
     gCtxCopy.lineWidth = 3
     gCtxCopy.strokeStyle = line.stroke
     gCtxCopy.font = line.size + 'px Impact'
@@ -78,21 +75,20 @@ function drawCopyText(text, idx = gMeme.lineIdx) {
 function renderMemeImg() {
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
-    gMeme.url = loadFromStorage(URL_KEY)
+    // gMeme.url = loadFromStorage(URL_KEY)
 
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         gCtxBottom.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         gCtxCopy.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        console.log(gMeme);
         setText(getLine().text)
         _clearStroke()
-        _strokeRect(getLine().linePos.x,getLine().linePos.y)
+        _strokeRect(getLine().linePos.x, getLine().linePos.y)
         renderLines()
         renderCopy()
     }
 }
-
-
 
 function renderLines() {
     for (var i = 0; i < gMeme.lines.length; i++) {
@@ -103,7 +99,6 @@ function renderLines() {
 }
 
 function addLine() {
-    
     var line = {
         linePos: { x: 50, y: 250 },
         text: 'New Line',
@@ -116,16 +111,10 @@ function addLine() {
         isClicked: false
     }
     gMeme.lines.push(line)
-
-    console.log(gMeme.lines);
 }
 
 /* MOUSE and TOUCH
 ---------------------------------------------------------*/
-
-function selectLine() {
-
-}
 
 function onDown(ev) {
     strokeOff()
@@ -141,7 +130,6 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-    
     const line = getLine();
     const evPos = getEvPos(ev)
     if (line.isDrag) {
@@ -157,40 +145,31 @@ function onMove(ev) {
 function onUp() {
     setTextDrag(false)
     setTextClick()
-    
     document.body.style.cursor = 'grab'
 }
 
 function setClickedLine(clickedPos) {
     gMeme.lines.forEach((line) => {
         // console.log(line);
-        var isClicked = line.isClicked
+        // var isClicked = line.isClicked
         const { x, y } = getLinePos(line)
         var yStart = y - 30
         var yEnd = y + 30
         if (clickedPos.y >= yStart && clickedPos.y <= yEnd) {
             line.isClicked = true
             var idx = gMeme.lines.findIndex((line) => {
-                return line.linePos.y >= yStart && line.linePos.y <= yEnd  
-            }) 
+                return line.linePos.y >= yStart && line.linePos.y <= yEnd
+            })
             strokeOn()
-            gMeme.lineIdx = idx  
+            gMeme.lineIdx = idx
             return idx
-        } 
-
+        }
     })
-    console.log(gMeme.lineIdx);
 }
 
 function isTextClicked(clickedPos) {
     setClickedLine(clickedPos)
-
-    var isClicked = gMeme.lines.find((line)=>{
-        
-        return line.isClicked === true
-    })
-
-    return isClicked
+    return gMeme.lines.find((line) => { return line.isClicked === true })
 }
 
 /* HELPERS
@@ -224,12 +203,9 @@ function setText(text = getLine().text) {
     saveMeme()
 }
 
-function setLine(direction, text) {
-    if (direction === 'down') {
-        gMeme.lineIdx++
-    } else gMeme.lineIdx--
+function setLine(direction) {
+    direction === 'down' ? gMeme.lineIdx++ : gMeme.lineIdx--
     if (gMeme.lineIdx >= gMeme.lines.length || gMeme.lineIdx <= 0) gMeme.lineIdx = 0
-
 }
 
 function setInputVal(text) {
@@ -241,19 +217,13 @@ function setInputVal(text) {
     saveMeme()
 }
 
-function setTextClick(isClicked = false){
-    gMeme.lines.forEach((line)=>{
-        line.isClicked = isClicked
-    })
+function setTextClick(isClicked = false) {
+    gMeme.lines.forEach((line) => { line.isClicked = isClicked })
 }
 
-// got render color bug
 function setFontColor(hex) {
     getLine().color = hex
-    hex = getLine().color
     saveMeme()
-    for (var i = 0; i < gMeme.lines.length; i++) {
-    }
     renderCanvas()
 }
 
@@ -279,9 +249,9 @@ function getColor() {
 // ------------------------------------------------------*/
 
 function drawText(text, idx = gMeme.lineIdx) {
-    
+
     var line = gMeme.lines[idx]
-    var {x,y} = line.linePos
+    var { x, y } = line.linePos
     gCtx.lineWidth = 3
     gCtx.strokeStyle = line.stroke
     gCtx.font = line.size + 'px Impact'
@@ -292,6 +262,10 @@ function drawText(text, idx = gMeme.lineIdx) {
 
 
 
+function clearTxtLine(x = gCanvas.width, y = gCanvas.height) {
+    var size = gMeme.lines[gMeme.lineIdx].size
+    gCtx.clearRect(x, y - size, gCanvas.width, size + 20);
+}
 
 function clearLine(x = gCanvas.width, y = gCanvas.height) {
     var size = gMeme.lines[gMeme.lineIdx].size

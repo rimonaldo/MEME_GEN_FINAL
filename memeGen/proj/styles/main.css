@@ -1,3 +1,6 @@
+@import url(mq/mq.css);
+
+
 @import url(basic/base.css);
 @import url(basic/layout.css);
 
@@ -10,7 +13,6 @@
 @import url(components/about.css);
 
 @import url(setup/typography.css);
-
 
 
 

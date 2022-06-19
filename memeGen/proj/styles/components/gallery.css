@@ -4,7 +4,7 @@
     width: 60%;
     grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
     grid-template-rows: repeat(auto-fit, 1fr);
-    border: 5px black solid;
+
     row-gap: 0.5em;
     column-gap: 0.5em;
 
@@ -14,9 +14,14 @@
 .gallery-img{
     margin: auto;
     border: 1px black solid;
+    border-radius: 5px;
     height: 200px;
     display: flex;
     min-width: 200px; 
+}
+
+.gallery-img:hover{
+
 }
 
 .gallery-img.fa-upload{

@@ -2,6 +2,7 @@
 
 var gImgs = []
 var gIds = []
+var gUrl
 
 function initg() {
     // gImgs = loadFromStorage(GALLERY_ID)
@@ -20,21 +21,21 @@ function renderGallery() {
     var startHtml = `<div class="upload"><a href="#" class="fa fa-solid fa-upload gallery-img"> <input onchange="onLoadImg(value)" id="image-input" accept="image/png, image/jpeg" type="file"></a></div>`
     gImgs.forEach((img) => {
         
-        innerHTML += ` <a href="editor.html"> <img  onclick="getMeme(${img.id})" class="gallery-img" id="${img.id}" src='${img.url}' alt=""></a>`
-        console.log(elGallery.innerHTML);
+        innerHTML += ` <a href="editor.html"> <img  onclick="getMeme('${img.id}')" class="gallery-img" id="${img.id}" src='${img.url}' alt=""></a>`
+
     })
     elGallery.innerHTML = startHtml+ innerHTML
     
 }
-
 
 function renderUploadedImg(url){
     addMemes(url)
     renderGallery()
 }
 
-function getMeme(img) {
-    var id = img.id
+function getMeme(id) {
+    console.log(id);
+
     var idx = _findIdxById(id, gImgs)
     gUrl = gImgs[idx].url
     console.log(gUrl);
@@ -43,7 +44,6 @@ function getMeme(img) {
     saveToStorage(ID_KEY, id)
 
 }
-
 
 function addMemes(url) {  
     
