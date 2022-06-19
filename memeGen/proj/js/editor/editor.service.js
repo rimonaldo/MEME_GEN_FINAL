@@ -73,6 +73,7 @@ function drawCopyText(text, idx = gMeme.lineIdx) {
 }
 
 function renderMemeImg() {
+    
     var img = new Image()
     img.src = loadFromStorage(URL_KEY)
     gMeme.url = loadFromStorage(URL_KEY)
@@ -80,7 +81,6 @@ function renderMemeImg() {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         gCtxBottom.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
         gCtxCopy.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        console.log(gMeme);
         setText(getLine().text)
         _clearStroke()
         _strokeRect(getLine().linePos.x, getLine().linePos.y)
@@ -129,6 +129,8 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
+    
+
     const line = getLine();
     const evPos = getEvPos(ev)
     if (line.isDrag) {

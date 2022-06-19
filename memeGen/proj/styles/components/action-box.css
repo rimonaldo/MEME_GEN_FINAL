@@ -13,11 +13,11 @@
 
 
 .actions-box input{
-    /* margin-bottom: 0.3em; */
-    /* border: 1px green solid; */
-    
-    width: 500px;
 
+    width: 500px;
+    height: 50px;
+    background-color: orange;
+    
     
 }
 

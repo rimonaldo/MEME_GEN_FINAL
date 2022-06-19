@@ -19,6 +19,9 @@ var gCtxBottom
 var gOpacity = 1
 var gIsStroke = false
 
+
+
+
 var gMeme = {
     url: '',
     memeUrl: '',
@@ -41,7 +44,7 @@ var gMeme = {
 function init() {
     gMemes = loadFromStorage('MEMES') || []
 
-    
+
     gMeme = loadMeme()
 
     setCanvas()
@@ -54,6 +57,7 @@ function init() {
 function renderCanvas() {
     renderMemeImg()
     saveMeme()
+
     // setText()
 }
 
@@ -192,6 +196,7 @@ function moveText(dx, dy) {
 function addListeners() {
     _addMouseListeners()
     _addTouchListeners()
+    _addSizeListeners()
 }
 
 function _addMouseListeners() {
@@ -204,4 +209,51 @@ function _addTouchListeners() {
     gCanvas.addEventListener('touchstart', onDown)
     gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchend', onUp)
+}
+
+function _addSizeListeners() {
+
+
+    window.addEventListener('resize', resizeCanvas)
+
+}
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-box');
+
+    console.log(window.innerWidth);
+    var isResize = false
+    if (window.innerWidth < 500 && window.innerWidth > 400 && isResize === false) {
+        // isResize = true
+        gCanvas.width = 400;
+        gCanvas.height = 400;
+        gCanvasBottom.width = 400
+        gCanvasBottom.height = 400
+
+        gMeme.lines.forEach((line)=>{
+            line.size = 40
+            line.linePos.x = 10
+        })
+        renderCanvas()
+    }
+
+    if (window.innerWidth > 500 && isResize === false) {
+        isResize = true
+        gCanvas.width = 500;
+        gCanvas.height = 500;
+        gCanvasBottom.width = 500
+        gCanvasBottom.height = 500
+
+        gMeme.lines.forEach((line)=>{
+            line.size = 60
+            line.linePos.x = 10
+        })
+        renderCanvas()
+    }
+    // Note: changing the canvas dimension this way clears the canvas
+
+    // Unless needed, better keep height fixed.
+    //   gCanvas.height = elContainer.offsetHeight
+
+    
 }
